@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id+/blankFragment">
+    app:startDestination="@id/historyFragment">
+
 
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.gymlog.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        android:id="@+id/historyFragment"
+        android:name="com.example.gymlog.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

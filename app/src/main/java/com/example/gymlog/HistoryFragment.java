@@ -2,11 +2,21 @@ package com.example.gymlog;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +70,43 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_history, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Get all components
+        Spinner spinnerExercise = getActivity().findViewById(R.id.spinnerExercise);
+        EditText editTextSets = getActivity().findViewById(R.id.editTextSets);
+        EditText editTextReps = getActivity().findViewById(R.id.editTextReps);
+        EditText editTextWeight = getActivity().findViewById(R.id.editTextWeight);
+        Button buttonAddExerciseDetail = getActivity().findViewById(R.id.buttonAddExerciseDetail);
+
+        //Get Exercises Record
+        DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
+        ArrayList<Exercise> exerciseArrayList = Exercise.getAllRecord(getActivity());
+        ArrayList<String> list = new ArrayList<>();
+        for (Exercise e: exerciseArrayList
+        ) {
+            list.add(e.getExercise_name());
+        }
+
+        //Convert array list to array
+        String[] listArray = new String[list.size()];
+        listArray = list.toArray(listArray);
+
+        //Set spinner values
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, listArray);
+        spinnerExercise.setAdapter(adapter);
+
+        buttonAddExerciseDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int sets = Integer.parseInt(editTextSets.getText().toString());
+                int reps = Integer.parseInt(editTextReps.getText().toString());
+                int weight = Integer.parseInt(editTextWeight.getText().toString());
+            }
+        });
     }
 }
