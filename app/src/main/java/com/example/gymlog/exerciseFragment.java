@@ -1,5 +1,6 @@
 package com.example.gymlog;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -72,6 +75,8 @@ public class exerciseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        FloatingActionButton floatingActionButtonAdd = getView().findViewById(R.id.floatingActionButtonAdd);
+
         //Get Exercise list
         ArrayList<Exercise> exerciseArrayList = Exercise.getAllRecord(getActivity());
 
@@ -80,5 +85,12 @@ public class exerciseFragment extends Fragment {
 
         recyclerViewExercise.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewExercise.setAdapter(adapter);
+
+        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AddExerciseActivity.class));
+            }
+        });
     }
 }
