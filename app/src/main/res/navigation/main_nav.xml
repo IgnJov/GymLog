@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/historyFragment">
+    app:startDestination="@id/exerciseFragment">
 
 
     <fragment
@@ -11,4 +11,9 @@
         android:name="com.example.gymlog.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.gymlog.exerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" />
 </navigation>
