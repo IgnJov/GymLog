@@ -15,7 +15,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-        dbHelper.reset();
     }
 }
