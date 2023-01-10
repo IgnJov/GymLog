@@ -159,4 +159,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    public Cursor getHistoryDataBasedOnDate(String stringDate){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT exercise_name, sets, reps, weight, date FROM histories INNER JOIN exercise_details ON exercise_details.history_id = histories.history_id INNER JOIN exercises ON exercise_details.exercise_id = exercises.exercise_id WHERE date = ?", new String[] {stringDate});
+
+        return cursor;
+    }
 }

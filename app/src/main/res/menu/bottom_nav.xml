@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNav_history"
+        android:title="History"
+        android:icon="@drawable/ic_history"/>
+    <item
+        android:id="@+id/bottomNav_exercise"
+        android:title="Exercise"
+        android:icon="@drawable/ic_dumbbell"/>
+</menu>
