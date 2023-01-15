@@ -1,6 +1,7 @@
 package com.example.gymlog;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -117,18 +120,16 @@ public class HistoryListFragment extends Fragment {
         return convertedStringDate;
     }
 
-    private ArrayList<String> exerciseNameList = new ArrayList<>();
-    private ArrayList<Integer> setsList = new ArrayList<>();
-    private ArrayList<Integer> repsList = new ArrayList<>();
-    private ArrayList<Integer> weightList = new ArrayList<>();
+    public void updateDataSet(String date){
+        DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
+        Cursor cursor = dbHelper.getHistoryDataBasedOnDate(date);
 
-    private void setupDataset(Cursor cursor){
+        ArrayList<String> exerciseNameList = new ArrayList<>();
+        ArrayList<Integer> setsList = new ArrayList<>();
+        ArrayList<Integer> repsList = new ArrayList<>();
+        ArrayList<Integer> weightList = new ArrayList<>();
+
         if(cursor.moveToFirst()) {
-            exerciseNameList.clear();
-            setsList.clear();
-            repsList.clear();
-            weightList.clear();
-
             do {
                 exerciseNameList.add(cursor.getString(0));
                 setsList.add(cursor.getInt(1));
@@ -136,15 +137,27 @@ public class HistoryListFragment extends Fragment {
                 weightList.add(cursor.getInt(3));
             } while (cursor.moveToNext());
         }
+
+        adapter.setDataSet(exerciseNameList, setsList, repsList, weightList);
+        adapter.notifyDataSetChanged();
     }
+
+    //Element Variable
+    ImageButton imageButton_calendar;
+    TextView textView_calendar;
+    FloatingActionButton floatingActionButton_addRoutine;
+
+    //Recycler View component
+    ReAdapterHistory adapter = null;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         //Get all elements
-        ImageButton imageButton_calendar = getView().findViewById(R.id.imageButton_calendar);
-        TextView textView_calendar = getView().findViewById(R.id.textView_calendar);
+        imageButton_calendar = getView().findViewById(R.id.imageButton_calendar);
+        textView_calendar = getView().findViewById(R.id.textView_calendar);
+        floatingActionButton_addRoutine = getView().findViewById(R.id.floatingActionButton_addRoutine);
 
         //Get current date
         Calendar calendar = Calendar.getInstance();
@@ -159,11 +172,24 @@ public class HistoryListFragment extends Fragment {
         //Set dataset for recycler view
         DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
         Cursor cursor = dbHelper.getHistoryDataBasedOnDate(convertDateSQLiteFormat(currentDate));
-        setupDataset(cursor);
+
+        ArrayList<String> exerciseNameList = new ArrayList<>();
+        ArrayList<Integer> setsList = new ArrayList<>();
+        ArrayList<Integer> repsList = new ArrayList<>();
+        ArrayList<Integer> weightList = new ArrayList<>();
+
+        if(cursor.moveToFirst()) {
+            do {
+                exerciseNameList.add(cursor.getString(0));
+                setsList.add(cursor.getInt(1));
+                repsList.add(cursor.getInt(2));
+                weightList.add(cursor.getInt(3));
+            } while (cursor.moveToNext());
+        }
 
         //Set recycler view
         RecyclerView RE = getView().findViewById(R.id.recyclerView_history);
-        ReAdapterHistory adapter = new ReAdapterHistory(cursor, exerciseNameList, setsList, repsList, weightList);
+        adapter = new ReAdapterHistory(exerciseNameList, setsList, repsList, weightList);
         RE.setLayoutManager(new LinearLayoutManager(getActivity()));
         RE.setAdapter(adapter);
 
@@ -177,14 +203,32 @@ public class HistoryListFragment extends Fragment {
                         month++;
                         String convertedDate = convertDateFormat(year, month, dayOfMonth);
                         textView_calendar.setText(convertedDate);
-                        Cursor cursor = dbHelper.getHistoryDataBasedOnDate(convertDateSQLiteFormat(convertedDate));
-                        setupDataset(cursor);
-                        adapter.notifyDataSetChanged();
+                        updateDataSet(convertDateSQLiteFormat(convertedDate));
                     }
                 }, currentYear, currentMonth, currentDay);
 
                 datePickerDialog.show();
             }
         });
+
+        floatingActionButton_addRoutine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get date picker input
+                String selectedDate = convertDateSQLiteFormat(textView_calendar.getText().toString());
+
+                //Create intent with selected date data
+                Intent intent = new Intent(getActivity(), AddRoutineActivity.class);
+                intent.putExtra("date", selectedDate);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateDataSet(convertDateSQLiteFormat(textView_calendar.getText().toString()));
     }
 }

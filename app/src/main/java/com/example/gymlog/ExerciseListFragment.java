@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -73,6 +74,8 @@ public class ExerciseListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_exercise_list, container, false);
     }
 
+    ReAdapterExercise adapter = null;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -84,7 +87,7 @@ public class ExerciseListFragment extends Fragment {
         //Get data
         ArrayList<Exercise> exerciseArrayList = Exercise.getAllRecord(getActivity());
 
-        ReAdapterExercise adapter = new ReAdapterExercise(exerciseArrayList);
+        adapter = new ReAdapterExercise(exerciseArrayList);
         recyclerView_exercise.setAdapter(adapter);
         recyclerView_exercise.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -94,5 +97,13 @@ public class ExerciseListFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddExerciseActivity.class));
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ArrayList<Exercise> updatedExerciseList = Exercise.getAllRecord(getActivity());
+        adapter.setDataSet(updatedExerciseList);
+        adapter.notifyDataSetChanged();
     }
 }

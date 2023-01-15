@@ -2,6 +2,7 @@ package com.example.gymlog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -39,6 +40,7 @@ public class AddExerciseActivity extends AppCompatActivity {
                     Exercise newExercise = new Exercise(exerciseName, muscle);
                     Exercise.insert(AddExerciseActivity.this, newExercise);
                     Toast.makeText(AddExerciseActivity.this, "Successfully add new exercise", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(AddExerciseActivity.this, MainActivity.class));
                 }
             }
         });

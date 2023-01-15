@@ -18,6 +18,10 @@ public class ReAdapterExercise extends RecyclerView.Adapter<ReAdapterExercise.My
         this.exercistList = exercistList;
     }
 
+    public void setDataSet(ArrayList<Exercise> exercistList){
+        this.exercistList = exercistList;
+    }
+
     @NonNull
     @Override
     public ReAdapterExercise.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

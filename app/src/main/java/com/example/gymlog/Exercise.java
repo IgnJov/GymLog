@@ -143,4 +143,16 @@ public class Exercise {
 
         return exercise;
     }
+
+    public static Exercise getExerciseByName(Context context, String exercise_name){
+        ArrayList<Exercise> exerciseArrayList = getAllRecord(context);
+
+        for(Exercise exercise : exerciseArrayList){
+            if(exercise.getExercise_name().equals(exercise_name)){
+                return exercise;
+            }
+        }
+
+        return null;
+    }
 }

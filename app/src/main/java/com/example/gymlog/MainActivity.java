@@ -39,10 +39,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
-        DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-        dbHelper.reset();
     }
 }

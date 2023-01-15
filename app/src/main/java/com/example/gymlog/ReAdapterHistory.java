@@ -18,7 +18,14 @@ public class ReAdapterHistory extends RecyclerView.Adapter<ReAdapterHistory.MyVi
     private ArrayList<Integer> repsList;
     private ArrayList<Integer> weightList;
 
-    public ReAdapterHistory(Cursor cursor, ArrayList<String> exerciseNameList, ArrayList<Integer> setsList, ArrayList<Integer> repsList, ArrayList<Integer> weightList){
+    public ReAdapterHistory(ArrayList<String> exerciseNameList, ArrayList<Integer> setsList, ArrayList<Integer> repsList, ArrayList<Integer> weightList){
+        this.exerciseNameList = exerciseNameList;
+        this.setsList = setsList;
+        this.repsList = repsList;
+        this.weightList = weightList;
+    }
+
+    public void setDataSet(ArrayList<String> exerciseNameList, ArrayList<Integer> setsList, ArrayList<Integer> repsList, ArrayList<Integer> weightList){
         this.exerciseNameList = exerciseNameList;
         this.setsList = setsList;
         this.repsList = repsList;
