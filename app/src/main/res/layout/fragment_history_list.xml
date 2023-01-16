@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context=".HistoryListFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/border_no_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_calendar">
@@ -26,7 +28,9 @@
             android:maxLength="20"
             android:maxLines="1"
             android:text="Exercise Name"
+            android:fontFamily="@font/malnor_regular"
             android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +45,8 @@
             android:maxLines="1"
             android:text="sets"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView_repsLabel"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,6 +62,8 @@
             android:maxLines="1"
             android:text="reps"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView_weightLabel"
             app:layout_constraintTop_toTopOf="parent" />
@@ -70,6 +78,8 @@
             android:maxLines="1"
             android:text="weight"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -92,6 +102,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="TextView"
+        android:fontFamily="@font/malnor_regular"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -101,6 +113,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_history"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
