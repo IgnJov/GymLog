@@ -48,7 +48,7 @@ public class AddRoutineActivity extends AppCompatActivity {
         String[] arrayOfExerciseName = arraylistOfExerciseName.toArray(new String[arraylistOfExerciseName.size()]);
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,
+                (this, R.layout.spinner_checked_layout,
                         arrayOfExerciseName);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                 .simple_spinner_dropdown_item);

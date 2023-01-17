@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context=".HistoryListFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/border_no_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_calendar">
@@ -26,22 +28,25 @@
             android:maxLength="20"
             android:maxLines="1"
             android:text="Exercise Name"
+            android:fontFamily="@font/malnor_regular"
             android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView_setsLabel"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:maxLines="1"
             android:text="sets"
-            android:textAlignment="textEnd"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView_repsLabel"
             app:layout_constraintTop_toTopOf="parent"
@@ -49,30 +54,32 @@
 
         <TextView
             android:id="@+id/textView_repsLabel"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:maxLines="1"
             android:text="reps"
-            android:textAlignment="textEnd"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView_weightLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView_weightLabel"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
             android:maxLines="1"
             android:text="weight"
-            android:textAlignment="textEnd"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/malnor_regular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -87,15 +94,16 @@
         android:minHeight="48dp"
         android:src="@drawable/ic_calender"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:text="TextView"
+        android:fontFamily="@font/malnor_regular"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -105,6 +113,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_history"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

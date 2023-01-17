@@ -11,6 +11,7 @@
         android:id="@+id/recyclerView_exercise"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/background_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +27,7 @@
         android:src="@drawable/ic_add"
         app:backgroundTint="#B6B6B6"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
