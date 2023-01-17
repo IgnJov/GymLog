@@ -33,6 +33,7 @@ public class ReAdapterExercise extends RecyclerView.Adapter<ReAdapterExercise.My
     @Override
     public void onBindViewHolder(@NonNull ReAdapterExercise.MyViewHolder holder, int position) {
         holder.textView_exerciseName.setText(exercistList.get(position).getExercise_name());
+        holder.textView_exerciseMuscle.setText(exercistList.get(position).getMuscle());
     }
 
     @Override
@@ -42,9 +43,11 @@ public class ReAdapterExercise extends RecyclerView.Adapter<ReAdapterExercise.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView textView_exerciseName;
+        TextView textView_exerciseMuscle;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_exerciseName = itemView.findViewById(R.id.textView_exerciseName);
+            textView_exerciseMuscle = itemView.findViewById(R.id.textView_exerciseMuscle);
         }
     }
 }
