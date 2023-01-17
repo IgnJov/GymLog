@@ -9,8 +9,4 @@
         android:id="@+id/bottomNav_exercise"
         android:title="Exercise"
         android:icon="@drawable/ic_dumbbell"/>
-    <item
-        android:id="@+id/bottomNav_timer"
-        android:title="Timer"
-        android:icon="@drawable/ic_dumbbell"/>
 </menu>
