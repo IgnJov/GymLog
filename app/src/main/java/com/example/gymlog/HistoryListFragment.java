@@ -146,6 +146,7 @@ public class HistoryListFragment extends Fragment {
     ImageButton imageButton_calendar;
     TextView textView_calendar;
     FloatingActionButton floatingActionButton_addRoutine;
+    FloatingActionButton floatingActionButton_restTimer;
 
     //Recycler View component
     ReAdapterHistory adapter = null;
@@ -158,6 +159,7 @@ public class HistoryListFragment extends Fragment {
         imageButton_calendar = getView().findViewById(R.id.imageButton_calendar);
         textView_calendar = getView().findViewById(R.id.textView_calendar);
         floatingActionButton_addRoutine = getView().findViewById(R.id.floatingActionButton_addRoutine);
+        floatingActionButton_restTimer = getView().findViewById(R.id.floatingActionButton_restTimer);
 
         //Get current date
         Calendar calendar = Calendar.getInstance();
@@ -222,6 +224,13 @@ public class HistoryListFragment extends Fragment {
                 intent.putExtra("date", selectedDate);
 
                 startActivity(intent);
+            }
+        });
+
+        floatingActionButton_restTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), RestTimer.class));
             }
         });
     }
