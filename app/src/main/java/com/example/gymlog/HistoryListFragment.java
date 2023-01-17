@@ -34,7 +34,7 @@ import java.util.Date;
  * Use the {@link HistoryListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HistoryListFragment extends Fragment {
+public class HistoryListFragment extends Fragment implements RecyclerViewInterface{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -191,7 +191,7 @@ public class HistoryListFragment extends Fragment {
 
         //Set recycler view
         RecyclerView RE = getView().findViewById(R.id.recyclerView_history);
-        adapter = new ReAdapterHistory(exerciseNameList, setsList, repsList, weightList);
+        adapter = new ReAdapterHistory(exerciseNameList, setsList, repsList, weightList, this);
         RE.setLayoutManager(new LinearLayoutManager(getActivity()));
         RE.setAdapter(adapter);
 
@@ -239,5 +239,10 @@ public class HistoryListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateDataSet(convertDateSQLiteFormat(textView_calendar.getText().toString()));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }

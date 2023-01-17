@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Use the {@link ExerciseListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ExerciseListFragment extends Fragment {
+public class ExerciseListFragment extends Fragment implements RecyclerViewInterface{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,7 +87,7 @@ public class ExerciseListFragment extends Fragment {
         //Get data
         ArrayList<Exercise> exerciseArrayList = Exercise.getAllRecord(getActivity());
 
-        adapter = new ReAdapterExercise(exerciseArrayList);
+        adapter = new ReAdapterExercise(exerciseArrayList, this);
         recyclerView_exercise.setAdapter(adapter);
         recyclerView_exercise.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -102,6 +102,16 @@ public class ExerciseListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        ArrayList<Exercise> updatedExerciseList = Exercise.getAllRecord(getActivity());
+        adapter.setDataSet(updatedExerciseList);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        ArrayList<Exercise> listOfExercise = Exercise.getAllRecord(getActivity());
+        Exercise.delete(getActivity(), listOfExercise.get(position));
+
         ArrayList<Exercise> updatedExerciseList = Exercise.getAllRecord(getActivity());
         adapter.setDataSet(updatedExerciseList);
         adapter.notifyDataSetChanged();

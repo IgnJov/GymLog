@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "GymLog";
-    private static final Integer DB_VERSION = 1;
+    private static final Integer DB_VERSION = 2;
 
 
     private static final String[] TABLE_NAMES = {"exercises", "exercise_details", "histories"};
@@ -25,6 +25,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        db.execSQL("PRAGMA foreign_keys=ON");
     }
 
     @Override
@@ -50,8 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "sets INTEGER, " +
                         "reps INTEGER, " +
                         "weight INTEGER, " +
-                        "FOREIGN KEY(exercise_id) REFERENCES exercises(exercise_id), " +
-                        "FOREIGN KEY(history_id) REFERENCES histories(history_id));"
+                        "FOREIGN KEY(exercise_id) REFERENCES exercises(exercise_id) ON UPDATE CASCADE ON DELETE CASCADE, " +
+                        "FOREIGN KEY(history_id) REFERENCES histories(history_id) ON UPDATE CASCADE ON DELETE CASCADE);"
         );
     }
 
