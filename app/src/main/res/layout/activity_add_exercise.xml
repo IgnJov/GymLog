@@ -4,26 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context=".AddExerciseActivity">
+
+    <TextView
+        android:id="@+id/textView_addExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/malnor_bold"
+        android:layout_marginTop="36dp"
+        android:text="Add Your Exercise"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_exerciseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
+        android:textColor="@color/white"
         android:text="Exercise Name"
-        android:textSize="20sp"
+        android:fontFamily="@font/malnor_regular"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_addExercise" />
+
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText
         android:id="@+id/editText_exerciseName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:textColor="@color/white"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_exerciseName" />
@@ -33,9 +52,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:text="Muscle Worked"
-        android:textSize="20sp"
+        android:fontFamily="@font/malnor_regular"
+        android:textColor="@color/white"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_exerciseName" />
 
@@ -52,10 +73,12 @@
 
     <Button
         android:id="@+id/button_addExercise"
-        android:layout_width="wrap_content"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
+        android:textColor="@color/white"
         android:text="Add Exercise"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -26,8 +26,8 @@ public class AddExerciseActivity extends AppCompatActivity {
         Button button_addExercise = findViewById(R.id.button_addExercise);
 
         ArrayList<String> muscleList = new ArrayList<>(Arrays.asList("Hamstring", "Glutes", "Shoulder", "Bicep", "Triceps", "Chest", "Calf", "Lats"));
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, muscleList);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_checked_layout, muscleList);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         spinner_muscle.setAdapter(adapter);
 
         button_addExercise.setOnClickListener(new View.OnClickListener() {

@@ -45,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="431dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="432dp"
         android:backgroundTint="@color/black"
         android:text="START" />
 
@@ -56,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="431dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginTop="502dp"
+        android:layout_marginEnd="162dp"
         android:backgroundTint="@color/black"
         android:text="RESET" />
 
